@@ -8,7 +8,7 @@ export interface Options {
 }
 
 const LINK = "https://www.googleapis.com/books/v1/volumes";
-const API = "AIzaSyAkoEeQNOTb9jXQ5Cvs87jEXgikyB3Q_Zs";
+const API_KEY = "AIzaSyAkoEeQNOTb9jXQ5Cvs87jEXgikyB3Q_Zs";
 const MAX_RESULTS = 30;
 
 export const getBooks = async ({
@@ -20,7 +20,7 @@ export const getBooks = async ({
     const startIndex = MAX_RESULTS * page;
     try {
         const response = await axios.get(
-            `${LINK}?q=${searchTerm}+subject:${category}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${sort}&key=${API}`
+            `${LINK}?q=${searchTerm}+subject:${category}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&orderBy=${sort}&key=${API_KEY}`
         );
 
         return response.data;
@@ -59,7 +59,7 @@ export const getCountBooks = async ({
 }: Options) => {
     try {
         const response = await axios.get(
-            `${LINK}?q=${searchTerm}+subject:${category}&orderBy=${sort}&key=${API}`
+            `${LINK}?q=${searchTerm}+subject:${category}&orderBy=${sort}&key=${API_KEY}`
         );
 
         return response.data;
